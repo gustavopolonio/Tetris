@@ -4,9 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log(squares)
   const scoreDisplay = document.querySelector("#score")
   const startBtn = document.querySelector("#start-button")
+  const restartButton = document.querySelector("#restart-button");
   const width = 10
   let nextRandom = 0
-  let timerId
+  let timerId = 0;
   let score = 0
 
   // The Tetraminoes
@@ -18,9 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
   ]
 
   const zTetramino = [
-    [width + 1, width + 2, width * 2, width * 2 + 1],
+    [1, 2, width, width + 1],
     [0, width, width + 1, width * 2 + 1],
-    [width + 1, width + 2, width * 2, width * 2 + 1],
+    [1, 2, width, width + 1],
     [0, width, width + 1, width * 2 + 1]
   ]
 
@@ -68,34 +69,25 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  // Make tetramino move down every second
-  // timerId = setInterval(moveDown, 300)
-
-  // Assign functions to keycodes
-  function control(event) {
-    if (event.keyCode === 37) {
-      moveLeft()
-    } else if (event.keyCode === 39) {
-      moveRight()
-    } else if (event.keyCode === 38) {
-      rotate()
-    } else if (event.keyCode === 40) {
-      moveDown()
-    }
-  }
-  document.addEventListener("keyup", control)
-
   // Move down function
   function moveDown() {
+    freeze()
+
+    if (newTetramino) {
+      return;
+    }
+
     undraw()
+
     currentPosition += width
     draw()
-    freeze()
   }
 
   const rotationNext = 0
+  let newTetramino = false;
   // Freeze function
   function freeze() {
+    newTetramino = false;
     if (current.some(index => squares[currentPosition + index + width].classList.contains("taken"))) {
       current.forEach(index => squares[currentPosition + index].classList.add("taken"))
       // Start a new tetramino
@@ -107,12 +99,14 @@ document.addEventListener("DOMContentLoaded", () => {
       displayShape()
       addScore()
       gameOver()
+      newTetramino = true;
     }
   }
 
+
   function moveLeft() {
     undraw()
-    const isALeftEdge = current.some(index => (currentPosition + index) % width === 0)
+    const isALeftEdge = current.some(index => (index + currentPosition) % width === 0);
 
     if (!isALeftEdge ) { currentPosition -= 1 }
 
@@ -125,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function moveRight() {
     undraw()
-    const isARightEdge = current.some(index => (currentPosition + index) % width === width - 1)
+    const isARightEdge = current.some(index => (index + currentPosition) % width === width - 1);
 
     if (!isARightEdge) { currentPosition += 1 }
 
@@ -139,14 +133,35 @@ document.addEventListener("DOMContentLoaded", () => {
   // Verify if is a left or right edge, and if there is tetraminos around
   function rotate() {
     undraw()
+
     currentRotation++
     if (currentRotation === current.length) {
       currentRotation = 0
     }
     current = theTetraminos[random][currentRotation]
+
+    const rightEdge = current.some(index => (index + currentPosition) % width === width - 1);
+    const leftEdge = current.some(index => (index + currentPosition) % width === 0);
+   
+    // Don't let Tetramino break when rotate in a edge
+    if (rightEdge && leftEdge) {
+      currentRotation--
+      current = theTetraminos[random][currentRotation]
+    }
+
+    //  Don't let an Tetramino get inside another when rotate
+    if (current.some(index => squares[index + currentPosition].classList.contains('taken'))) {
+      if (currentRotation === 0) {
+        currentRotation = current.length - 1;
+      } else {
+        currentRotation--
+      }
+
+      current = theTetraminos[random][currentRotation]
+    }
+
     draw()
   }
-
 
   // Show up Next tetramino in mini grid
   const displaySquares = document.querySelectorAll(".mini-grid div")
@@ -176,13 +191,28 @@ document.addEventListener("DOMContentLoaded", () => {
   nextRandom = Math.floor(Math.random() * theTetraminos.length)
   displayShape()
 
+  // Assign functions to keycodes
+  function control(event) {
+    if (event.keyCode === 37) {
+      moveLeft()
+    } else if (event.keyCode === 39) {
+      moveRight()
+    } else if (event.keyCode === 38) {
+      rotate()
+    } else if (event.keyCode === 40) {
+      moveDown()
+    }
+  }
+
   // Button Play/Pause
   startBtn.addEventListener("click", () => {
     if (timerId) {
       clearInterval(timerId)
       timerId = null
+      document.removeEventListener("keyup", control)
     } else {
-      timerId = setInterval(moveDown, 400)
+      timerId = setInterval(moveDown, 250)
+      document.addEventListener("keyup", control)
     }
   })
 
@@ -207,9 +237,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function gameOver() {
     if (current.some(index => squares[currentPosition + index].classList.contains("taken"))) {
       clearInterval(timerId)
+      document.removeEventListener("keyup", control);
       scoreDisplay.innerHTML = "GAME OVER"
+
     }
   }
+
+  restartButton.addEventListener("click", () => {
+    window.location.reload();
+  })
 
 })
 
