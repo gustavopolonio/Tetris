@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.querySelector(".grid")
   let squares = Array.from(document.querySelectorAll(".grid div"))
-  console.log(squares)
   const scoreDisplay = document.querySelector("#score")
   const startBtn = document.querySelector("#start-button")
   const restartButton = document.querySelector("#restart-button");
@@ -9,6 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let nextRandom = 0
   let timerId = 0;
   let score = 0
+  const completedLineAudio = new Audio("./audios/completedLine.wav");
+  const gameOverAudio = new Audio("./audios/gameOver.wav");
+  const tetraminoFreezeAudio = new Audio("./audios/tetraminoFreeze.wav");
 
   // The Tetraminoes
   const lTetramino = [
@@ -83,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
     draw()
   }
 
-  const rotationNext = 0
   let newTetramino = false;
   // Freeze function
   function freeze() {
@@ -94,12 +95,15 @@ document.addEventListener("DOMContentLoaded", () => {
       random = nextRandom
       nextRandom = Math.floor(Math.random() * theTetraminos.length)
       currentPosition = 3
+      currentRotation = 0;
+      const rotationNext = 0
       current = theTetraminos[random][rotationNext]
       draw()
       displayShape()
       addScore()
       gameOver()
       newTetramino = true;
+      tetraminoFreezeAudio.play();
     }
   }
 
@@ -145,7 +149,12 @@ document.addEventListener("DOMContentLoaded", () => {
    
     // Don't let Tetramino break when rotate in a edge
     if (rightEdge && leftEdge) {
-      currentRotation--
+      if (currentRotation === 0) {
+        currentRotation = current.length - 1;
+      } else {
+        currentRotation--
+      }
+
       current = theTetraminos[random][currentRotation]
     }
 
@@ -209,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (timerId) {
       clearInterval(timerId)
       timerId = null
-      document.removeEventListener("keyup", control)
+      // document.removeEventListener("keyup", control)
     } else {
       timerId = setInterval(moveDown, 250)
       document.addEventListener("keyup", control)
@@ -223,6 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (row.every(index => squares[index].classList.contains("taken"))) {
         score += 10
         scoreDisplay.innerHTML = score
+        completedLineAudio.play();
         row.forEach(index => {
           squares[index].classList.remove("taken")
           squares[index].classList.remove("tetramino")
@@ -239,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
       clearInterval(timerId)
       document.removeEventListener("keyup", control);
       scoreDisplay.innerHTML = "GAME OVER"
-
+      gameOverAudio.play();
     }
   }
 
