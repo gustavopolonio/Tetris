@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Start a new tetramino
       random = nextRandom
       nextRandom = Math.floor(Math.random() * theTetraminos.length)
-      currentPosition = 3
+      currentPosition = 3;
       currentRotation = 0;
       const rotationNext = 0
       current = theTetraminos[random][rotationNext]
@@ -106,7 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
       tetraminoFreezeAudio.play();
     }
   }
-
 
   function moveLeft() {
     undraw()
@@ -218,31 +217,53 @@ document.addEventListener("DOMContentLoaded", () => {
     if (timerId) {
       clearInterval(timerId)
       timerId = null
-      // document.removeEventListener("keyup", control)
+      document.removeEventListener("keyup", control)
     } else {
-      timerId = setInterval(moveDown, 250)
       document.addEventListener("keyup", control)
+      setTimeToMoveDown();
     }
   })
 
+  let timeMoveDown = 700;
+
+  function setTimeToMoveDown() {
+
+    if (score === 10) { 
+      timeMoveDown = 500
+    } else if (score === 20) { 
+      timeMoveDown = 400
+    } else if (score === 30) { 
+      timeMoveDown = 300
+    } else if (score >= 40) { 
+      timeMoveDown = 200
+    }
+
+    timerId = setInterval(moveDown, timeMoveDown)
+  }
+
   function addScore() {
+
     for (var i = 0; i < 199; i += width) {
       const row = [i, i + 1, i + 2, i + 3, i + 4, i + 5, i + 6, i + 7, i + 8, i + 9]
 
       if (row.every(index => squares[index].classList.contains("taken"))) {
-        score += 10
-        scoreDisplay.innerHTML = score
+        score += 10;
+        scoreDisplay.innerHTML = score;
         completedLineAudio.play();
         row.forEach(index => {
-          squares[index].classList.remove("taken")
-          squares[index].classList.remove("tetramino")
+          squares[index].classList.remove("taken");
+          squares[index].classList.remove("tetramino");
         })
-        const squaresRemoved = squares.splice(i, width)
-        squares = squaresRemoved.concat(squares)
-        squares.forEach(cell => grid.appendChild(cell))
+        const squaresRemoved = squares.splice(i, width);
+        squares = squaresRemoved.concat(squares);
+        squares.forEach(cell => grid.appendChild(cell));
+
+        clearInterval(timerId);
+        setTimeToMoveDown();
       }
     }
   }
+
 
   function gameOver() {
     if (current.some(index => squares[currentPosition + index].classList.contains("taken"))) {

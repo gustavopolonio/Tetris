@@ -1,14 +1,14 @@
-[ ] Put sound when Tetramino freeze
-[C] Put sound when complete one line
-[X] Put sound when game is over
 [ ] Update the commands
 [ ] Put image rendering the page
 [ ] Make responsible
 [ ] Make commands to play in mobile
-[ ] Icrease speed over the time
+[ ] When break more than one line, bug
+[ ] Increase score when tetramino freeze too
 [ ] When maintain key press, go down and side rapper
 [ ] Style mini grid
 [ ] Put border in Tetraminos
+[ ] Button play/pause after game over
+[ ] Generate different tetramino colors (can't have 2 equal in sequence)
 
 [X] Don't let get inside another when rotate
 [X] Don't let get inside another when go to side
@@ -18,3 +18,7 @@
 [X] Button restart
 [X] See up event
 [X] Favicon
+[X] Put sound when complete one line
+[X] Put sound when game is over
+[X] Put sound when Tetramino freeze
+[X] Icrease speed over the time
