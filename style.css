@@ -105,16 +105,15 @@ body h3 {
     background: linear-gradient(to right, #cc0099, #ff80ff, #ff99ff);
 }
 
-
-@media (max-width: 450px) {
+@media (max-width: 349px) {
   .grid {
-    width: 182px;
-    height: 360px;
+    width: 160px;
+    height: 320px;
   }
 
   .grid div {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     border: 1px solid green;
   }
 
@@ -127,14 +126,51 @@ body h3 {
   }
 
   .mini-grid {
-    width: 72px;
-    height: 72px;
+    width: 64px;
+    height: 64px;
     margin-left: 5px;
   }
   
   .mini-grid div {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
+    border: 1px solid green;
+  }
+
+  .mini-grid .mobile-hidden {
+    border: 1px solid transparent;
+  }
+}
+
+@media (min-width: 350px) and (max-width: 450px) {
+  .grid {
+    width: 200px;
+    height: 400px;
+  }
+
+  .grid div {
+    width: 18px;
+    height: 18px;
+    border: 1px solid green;
+  }
+
+  #div-transparent {
+    border: 1px solid transparent;
+  }
+
+  .tetramino {
+    border: 1px solid black !important;
+  }
+
+  .mini-grid {
+    width: 80px;
+    height: 80px;
+    margin-left: 10px;
+  }
+  
+  .mini-grid div {
+    width: 18px;
+    height: 18px;
     border: 1px solid green;
   }
 
