@@ -271,6 +271,8 @@ document.addEventListener("DOMContentLoaded", () => {
       document.removeEventListener("keyup", control);
       scoreDisplay.innerHTML = "GAME OVER"
       gameOverAudio.play();
+      startBtn.setAttribute("disabled", "true")
+      startBtn.classList.add("disabled")
     }
   }
 
