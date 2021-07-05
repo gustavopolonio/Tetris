@@ -46,7 +46,8 @@ body {
 .content-container .content-right {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: initial;
+  margin-left: 30px;
 }
 
 body h3 {
@@ -82,7 +83,6 @@ body h3 {
   background-color: green;
   display: flex;
   flex-wrap: wrap;
-  margin-left: 30px;
 }
 
 .mini-grid div {
@@ -139,7 +139,6 @@ body h3 {
   .mini-grid {
     width: 64px;
     height: 64px;
-    margin-left: 5px;
   }
   
   .mini-grid div {
@@ -150,6 +149,10 @@ body h3 {
 
   .mini-grid .mobile-hidden {
     border: 1px solid transparent;
+  }
+
+  .content-container .content-right {
+    margin-left: 12px;
   }
 
   body h3 {
@@ -201,7 +204,6 @@ body h3 {
   .mini-grid {
     width: 80px;
     height: 80px;
-    margin-left: 10px;
   }
   
   .mini-grid div {
@@ -214,8 +216,12 @@ body h3 {
     border: 1px solid transparent;
   }
 
+  .content-container .content-right {
+    margin-left: 16px;
+  }
+
   body h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   .commands-controller {
