@@ -1,19 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+}
+
+.container {
+  padding: 1rem;
+}
+
+body h3 {
+  font-size: 2rem;
+}
+
+.buttons-container {
+  padding: 1rem 0;
+  width: 240px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.buttons-container button {
+  cursor: pointer;
+  border: none;
+  background: #1e2ede;
+  color: white;
+  font-size: 1rem; 
+  font-weight: bold;
+  border-radius: 0.4rem;
+  height: 2rem;
+
+  transition: filter 0.2s;
+}
+
+.buttons-container button:hover {
+  filter: brightness(0.8);
+}
+
 .content-container {
-    display: flex;
+  display: flex;
 }
 
 .grid {
-    width: 240px;
-    height: 480px;
-    background-color: green;
-    display: flex;
-    flex-wrap: wrap;
+  width: 240px;
+  height: 480px;
+  background-color: green;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .grid div {
-    width: 20px;
-    height: 20px;
-    border: 2px solid green;
+  width: 20px;
+  height: 20px;
+  border: 2px solid green;
 }
 
 .tetramino {
