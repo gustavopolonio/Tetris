@@ -1,12 +1,12 @@
-[ ] Put image rendering the page
 [ ] Make responsible
 [ ] Make commands to play in mobile
 [ ] When break more than one line, bug
 [ ] Increase score when tetramino freeze too
 [ ] When maintain key press, go down and side rapper
 [ ] Style mini grid
-[ ] Put border in Tetraminos
 [ ] Generate different tetramino colors (can't have 2 equal in sequence)
+
+<!-- [ ] Put image rendering the page -->
 
 [X] Don't let get inside another when rotate
 [X] Don't let get inside another when go to side
@@ -22,3 +22,4 @@
 [X] Icrease speed over the time
 [X] Button play/pause after game over
 [X] Update the commands
+[X] Put border in Tetraminos

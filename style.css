@@ -3,8 +3,8 @@
 }
 
 .grid {
-    width: 200px;
-    height: 400px;
+    width: 240px;
+    height: 480px;
     background-color: green;
     display: flex;
     flex-wrap: wrap;
@@ -13,15 +13,21 @@
 .grid div {
     width: 20px;
     height: 20px;
+    border: 2px solid green;
 }
 
 .tetramino {
     background-color: blue;
+    border: 2px solid black !important;
+}
+
+#div-transparent {
+    border: none;
 }
 
 .mini-grid {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     background-color: green;
     display: flex;
     flex-wrap: wrap;
@@ -31,6 +37,7 @@
 .mini-grid div {
     width: 20px;
     height: 20px;
+    border: 2px solid green;
 }
 
 .disabled {
