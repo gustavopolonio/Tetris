@@ -181,14 +181,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // See if is mobile or web
   const isMobile = window.matchMedia('(max-width: 450px)').matches;
+  const commandsController = document.querySelector(".commands-controller");
+  const leftButton = document.getElementById("leftButton");
+  const rightButton = document.getElementById("rightButton");
+  const downButton = document.getElementById("downButton");
+  const rotateButton = document.getElementById("rotateButton");
 
   let upNextTetraminos = [];
-  let displayIndex = 0
+  let displayIndex = 0;
 
   if (isMobile) {
     // Show up Next tetramino in mini grid
-    const displayWidth = 4
-    displayIndex = 0
+    const displayWidth = 4;
+    displayIndex = 0;
 
     // The tetraminos without rotations
     upNextTetraminos = [
@@ -199,6 +204,8 @@ document.addEventListener("DOMContentLoaded", () => {
       [1, 1 + displayWidth, 1 + 2 * displayWidth, 1 + 3 * displayWidth]
     ]
   } else {
+    commandsController.remove();
+
     const displayWidth = 6
     displayIndex = 6
 
@@ -230,16 +237,25 @@ document.addEventListener("DOMContentLoaded", () => {
   nextRandom = Math.floor(Math.random() * theTetraminos.length)
   displayShape()
 
-  // Assign functions to keycodes
-  function control(event) {
-    if (event.keyCode === 37) {
-      moveLeft()
-    } else if (event.keyCode === 39) {
-      moveRight()
-    } else if (event.keyCode === 38 || event.keyCode === 32 || event.keyCode === 13) {
-      rotate()
-    } else if (event.keyCode === 40) {
-      moveDown()
+  if (isMobile) {
+    function control() {
+      leftButton.addEventListener("click", moveLeft);
+      rightButton.addEventListener("click", moveRight);
+      downButton.addEventListener("click", moveDown);
+      rotateButton.addEventListener("click", rotate);
+    }
+  } else {
+    // Assign functions to keycodes
+    function control(event) {
+      if (event.keyCode === 37) {
+        moveLeft()
+      } else if (event.keyCode === 39) {
+        moveRight()
+      } else if (event.keyCode === 38 || event.keyCode === 32 || event.keyCode === 13) {
+        rotate()
+      } else if (event.keyCode === 40) {
+        moveDown()
+      }
     }
   }
 
@@ -250,7 +266,10 @@ document.addEventListener("DOMContentLoaded", () => {
       timerId = null
       document.removeEventListener("keydown", control)
     } else {
-      document.addEventListener("keydown", control)
+      isMobile 
+      ? document.addEventListener("click", control)
+      : document.addEventListener("keydown", control)
+
       setTimeToMoveDown();
     }
   })

@@ -1,4 +1,3 @@
-[ ] Make responsible
 [ ] Make commands to play in mobile
 [ ] Increase score when tetramino freeze too
 [ ] Ranking scores
@@ -24,3 +23,4 @@
 [X] Style mini grid
 [X] When maintain key press, go down and side rapper
 [X] When break more than one line, bug
+[X] Make responsible
