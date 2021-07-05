@@ -57,10 +57,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let random = Math.floor(Math.random() * theTetraminos.length)
   let current = theTetraminos[random][currentRotation]
 
+  const collors = ["blue", "yellow", "red", "orange", "pink"]
+  let currentCollor = Math.floor(Math.random() * collors.length)
+  let nextCollor = Math.floor(Math.random() * collors.length)
+
   // draw the first rotation in the random Tetramino
   function draw() {
     current.forEach(index => {
-      squares[currentPosition + index].classList.add("tetramino")
+      squares[currentPosition + index].classList.add("tetramino");
+      squares[currentPosition + index].classList.add(`${collors[currentCollor]}`);
     })
   }
   draw()
@@ -68,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function undraw() {
     current.forEach(index => {
       squares[currentPosition + index].classList.remove("tetramino")
+      squares[currentPosition + index].classList.remove(`${collors[currentCollor]}`);
     })
   }
 
@@ -98,7 +104,9 @@ document.addEventListener("DOMContentLoaded", () => {
       currentRotation = 0;
       const rotationNext = 0
       current = theTetraminos[random][rotationNext]
+      currentCollor = nextCollor;
       draw()
+      nextCollor = Math.floor(Math.random() * collors.length)
       displayShape()
       addScore()
       gameOver()
@@ -185,14 +193,18 @@ document.addEventListener("DOMContentLoaded", () => {
     [1, 1 + displayWidth, 1 + 2 * displayWidth, 1 + 3 * displayWidth]
   ]
 
+
   // Display the shape in mini grid
   function displayShape() {
     // Remove any trace of a tatramino form the entire grid
     displaySquares.forEach(square => {
       square.classList.remove("tetramino")
+      square.classList.remove(`${collors[currentCollor]}`)
     })
+
     upNextTetraminos[nextRandom].forEach(index => {
-      displaySquares[displayIndex + index].classList.add("tetramino")
+      displaySquares[displayIndex + index].classList.add("tetramino");
+      displaySquares[displayIndex + index].classList.add(`${collors[nextCollor]}`)
     })
   }
 
@@ -253,6 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
         row.forEach(index => {
           squares[index].classList.remove("taken");
           squares[index].classList.remove("tetramino");
+          squares[index].classList.remove("blue", "yellow", "red", "orange", "pink");
         })
         const squaresRemoved = squares.splice(i, width);
         squares = squaresRemoved.concat(squares);

@@ -43,3 +43,23 @@
 .disabled {
     cursor: not-allowed;
 }
+
+.blue {
+    background: blue;
+}
+
+.yellow {
+    background: yellow;
+}
+
+.red {
+    background: red;
+}
+
+.orange {
+    background: orange;
+}
+
+.pink {
+    background: palevioletred;
+}

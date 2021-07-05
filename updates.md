@@ -4,7 +4,6 @@
 [ ] Increase score when tetramino freeze too
 [ ] When maintain key press, go down and side rapper
 [ ] Style mini grid
-[ ] Generate different tetramino colors (can't have 2 equal in sequence)
 
 <!-- [ ] Put image rendering the page -->
 
@@ -23,3 +22,4 @@
 [X] Button play/pause after game over
 [X] Update the commands
 [X] Put border in Tetraminos
+[X] Generate different tetramino colors
