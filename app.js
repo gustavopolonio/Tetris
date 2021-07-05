@@ -35,10 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ]
 
   const oTetramino = [
-    [0, 1, width, width + 1],
-    [0, 1, width, width + 1],
-    [0, 1, width, width + 1],
-    [0, 1, width, width + 1]
+    [1, 2, 1 + width, width + 2],
+    [1, 2, 1 + width, width + 2],
+    [1, 2, 1 + width, width + 2],
+    [1, 2, 1 + width, width + 2]
   ]
 
   const iTetramino = [
@@ -179,20 +179,39 @@ document.addEventListener("DOMContentLoaded", () => {
     draw()
   }
 
-  // Show up Next tetramino in mini grid
+  // See if is mobile or web
+  const isMobile = window.matchMedia('(max-width: 450px)').matches;
+
+  let upNextTetraminos = [];
+  let displayIndex = 0
+
+  if (isMobile) {
+    // Show up Next tetramino in mini grid
+    const displayWidth = 4
+    displayIndex = 0
+
+    // The tetraminos without rotations
+    upNextTetraminos = [
+      [1, 2, 1 + displayWidth, 1 + 2 * displayWidth],
+      [1 + displayWidth, 2 + displayWidth, displayWidth * 2, 1 + displayWidth * 2],
+      [1 + displayWidth, displayWidth * 2, 1 + displayWidth * 2, 2 + displayWidth * 2],
+      [1 + displayWidth, 2 + displayWidth, 1 + displayWidth * 2, 2 + displayWidth * 2],
+      [1, 1 + displayWidth, 1 + 2 * displayWidth, 1 + 3 * displayWidth]
+    ]
+  } else {
+    const displayWidth = 6
+    displayIndex = 6
+
+    upNextTetraminos = [
+      [2, 3, 2 + displayWidth, 2 + 2 * displayWidth],
+      [2 + displayWidth, 3 + displayWidth, 1 + displayWidth * 2, 2 + displayWidth * 2],
+      [2 + displayWidth, 1 + displayWidth * 2, 2 + displayWidth * 2, 3 + displayWidth * 2],
+      [2 + displayWidth, 3 + displayWidth, 2 + displayWidth * 2, 3 + displayWidth * 2],
+      [2, 2 + displayWidth, 2 + 2 * displayWidth, 2 + 3 * displayWidth]
+    ]
+  }
+
   const displaySquares = document.querySelectorAll(".mini-grid div")
-  const displayWidth = 6
-  let displayIndex = 6
-
-  // The tetraminos without rotations
-  const upNextTetraminos = [
-    [2, 3, 2 + displayWidth, 2 + 2 * displayWidth],
-    [2 + displayWidth, 3 + displayWidth, 1 + displayWidth * 2, 2 + displayWidth * 2],
-    [2 + displayWidth, 1 + displayWidth * 2, 2 + displayWidth * 2, 3 + displayWidth * 2],
-    [2 + displayWidth, 3 + displayWidth, 2 + displayWidth * 2, 3 + displayWidth * 2],
-    [2, 2 + displayWidth, 2 + 2 * displayWidth, 2 + 3 * displayWidth]
-  ]
-
 
   // Display the shape in mini grid
   function displayShape() {
