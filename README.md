@@ -14,7 +14,7 @@
 # :book: About this Project
 
 I like to development games because helps me to study Javascript, is fun and I can play them ready. Tetris was part of my childhood, that's why I coded a 
-responsive Tetris version. I really enjoyed make this project, because several Javascript functions are needed and I took the opportunity to review concepts.
+responsive Tetris version with pure JS. I really enjoyed make this project, because several Javascript functions are needed and I took the opportunity to review concepts.
 
 This project is part of my personal portfolio, so I would appreciate if you provide me any 
 feedback about the ideia, code, structure or anything you could report to make me a better developer.
