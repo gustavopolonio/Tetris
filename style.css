@@ -26,8 +26,8 @@
 }
 
 .mini-grid {
-    width: 120px;
-    height: 120px;
+    width: 144px;
+    height: 144px;
     background-color: green;
     display: flex;
     flex-wrap: wrap;

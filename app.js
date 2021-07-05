@@ -181,16 +181,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Show up Next tetramino in mini grid
   const displaySquares = document.querySelectorAll(".mini-grid div")
-  const displayWidth = 5
-  let displayIndex = 1
+  const displayWidth = 6
+  let displayIndex = 6
 
   // The tetraminos without rotations
   const upNextTetraminos = [
-    [1, 2, 1 + displayWidth, 1 + 2 * displayWidth],
-    [1 + displayWidth, 2 + displayWidth, 2 * displayWidth, 1 + 2 * displayWidth],
-    [1, displayWidth, 1 + displayWidth, 2 + displayWidth],
-    [0, 1, displayWidth, 1 + displayWidth],
-    [1, 1 + displayWidth, 1 + 2 * displayWidth, 1 + 3 * displayWidth]
+    [2, 3, 2 + displayWidth, 2 + 2 * displayWidth],
+    [2 + displayWidth, 3 + displayWidth, 1 + displayWidth * 2, 2 + displayWidth * 2],
+    [2 + displayWidth, 1 + displayWidth * 2, 2 + displayWidth * 2, 3 + displayWidth * 2],
+    [2 + displayWidth, 3 + displayWidth, 2 + displayWidth * 2, 3 + displayWidth * 2],
+    [2, 2 + displayWidth, 2 + 2 * displayWidth, 2 + 3 * displayWidth]
   ]
 
 

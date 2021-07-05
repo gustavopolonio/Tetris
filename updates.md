@@ -3,7 +3,6 @@
 [ ] When break more than one line, bug
 [ ] Increase score when tetramino freeze too
 [ ] When maintain key press, go down and side rapper
-[ ] Style mini grid
 
 <!-- [ ] Put image rendering the page -->
 
@@ -23,3 +22,4 @@
 [X] Update the commands
 [X] Put border in Tetraminos
 [X] Generate different tetramino colors
+[X] Style mini grid
