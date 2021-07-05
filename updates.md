@@ -1,8 +1,4 @@
-[ ] Make commands to play in mobile
-[ ] Increase score when tetramino freeze too
 [ ] Ranking scores
-
-<!-- [ ] Put image rendering the page -->
 
 [X] Don't let get inside another when rotate
 [X] Don't let get inside another when go to side
@@ -24,3 +20,5 @@
 [X] When maintain key press, go down and side rapper
 [X] When break more than one line, bug
 [X] Make responsible
+[X] Make commands to play in mobile
+[X] Increase score when tetramino freeze too

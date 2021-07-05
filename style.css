@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+button:not(:disabled) {
+  cursor: pointer;
+}
+
 body {
   height: 100vh;
 }
@@ -24,7 +28,6 @@ body h3 {
 }
 
 .buttons-container button {
-  cursor: pointer;
   border: none;
   background: #1e2ede;
   color: white;
@@ -36,7 +39,7 @@ body h3 {
   transition: filter 0.2s;
 }
 
-.buttons-container button:hover {
+.buttons-container button:not(:disabled):hover {
   filter: brightness(0.8);
 }
 
@@ -76,13 +79,14 @@ body h3 {
 }
 
 .mini-grid div {
-    width: 20px;
-    height: 20px;
-    border: 2px solid green;
+  width: 20px;
+  height: 20px;
+  border: 2px solid green;
 }
 
 .disabled {
-    cursor: not-allowed;
+  cursor: not-allowed; 
+  opacity: 0.6;
 }
 
 .blue {

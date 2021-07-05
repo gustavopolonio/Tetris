@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const grid = document.querySelector(".grid")
-  let squares = Array.from(document.querySelectorAll(".grid div"))
-  const scoreDisplay = document.querySelector("#score")
-  const startBtn = document.querySelector("#start-button")
+  const grid = document.querySelector(".grid");
+  let squares = Array.from(document.querySelectorAll(".grid div"));
+  const scoreDisplay = document.querySelector("#score");
+  const startBtn = document.querySelector("#start-button");
   const restartButton = document.querySelector("#restart-button");
-  const width = 10
-  let nextRandom = 0
+  const width = 10;
+  let nextRandom = 0;
   let timerId = 0;
-  let score = 0
+  let score = 0;
   const completedLineAudio = new Audio("./audios/completedLine.wav");
   const gameOverAudio = new Audio("./audios/gameOver.wav");
   const tetraminoFreezeAudio = new Audio("./audios/tetraminoFreeze.wav");
@@ -18,48 +18,48 @@ document.addEventListener("DOMContentLoaded", () => {
     [width, width + 1, width + 2, width * 2 + 2],
     [1, 1 + width, width * 2, 1 + width * 2],
     [width, width * 2, width * 2 + 1, width * 2 + 2]
-  ]
+  ];
 
   const zTetramino = [
     [1, 2, width, width + 1],
     [0, width, width + 1, width * 2 + 1],
     [1, 2, width, width + 1],
     [0, width, width + 1, width * 2 + 1]
-  ]
+  ];
 
   const tTetramino = [
     [1, width, width + 1, width + 2],
     [1, width + 1, width + 2, width * 2 + 1],
     [width, width + 1, width + 2, width * 2 + 1],
     [1, width, width + 1, width * 2 + 1]
-  ]
+  ];
 
   const oTetramino = [
     [1, 2, 1 + width, width + 2],
     [1, 2, 1 + width, width + 2],
     [1, 2, 1 + width, width + 2],
     [1, 2, 1 + width, width + 2]
-  ]
+  ];
 
   const iTetramino = [
     [1, width + 1, width * 2 + 1, width * 3 + 1],
     [width, width + 1, width + 2, width + 3],
     [1, width + 1, width * 2 + 1, width * 3 + 1],
     [width, width + 1, width + 2, width + 3]
-  ]
+  ];
 
-  const theTetraminos = [lTetramino, zTetramino, tTetramino, oTetramino, iTetramino]
+  const theTetraminos = [lTetramino, zTetramino, tTetramino, oTetramino, iTetramino];
 
-  let currentPosition = 3
-  let currentRotation = 0
+  let currentPosition = 3;
+  let currentRotation = 0;
 
   // Select a random Tetramino and its first rotation
-  let random = Math.floor(Math.random() * theTetraminos.length)
-  let current = theTetraminos[random][currentRotation]
+  let random = Math.floor(Math.random() * theTetraminos.length);
+  let current = theTetraminos[random][currentRotation];
 
-  const collors = ["blue", "yellow", "red", "orange", "pink"]
-  let currentCollor = Math.floor(Math.random() * collors.length)
-  let nextCollor = Math.floor(Math.random() * collors.length)
+  const collors = ["blue", "yellow", "red", "orange", "pink"];
+  let currentCollor = Math.floor(Math.random() * collors.length);
+  let nextCollor = Math.floor(Math.random() * collors.length);
 
   // draw the first rotation in the random Tetramino
   function draw() {
@@ -68,11 +68,11 @@ document.addEventListener("DOMContentLoaded", () => {
       squares[currentPosition + index].classList.add(`${collors[currentCollor]}`);
     })
   }
-  draw()
+  draw();
 
   function undraw() {
     current.forEach(index => {
-      squares[currentPosition + index].classList.remove("tetramino")
+      squares[currentPosition + index].classList.remove("tetramino");
       squares[currentPosition + index].classList.remove(`${collors[currentCollor]}`);
     })
   }
@@ -85,10 +85,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    undraw()
+    undraw();
 
-    currentPosition += width
-    draw()
+    currentPosition += width;
+    draw();
   }
 
   let newTetramino = false;
@@ -102,14 +102,16 @@ document.addEventListener("DOMContentLoaded", () => {
       nextRandom = Math.floor(Math.random() * theTetraminos.length)
       currentPosition = 3;
       currentRotation = 0;
-      const rotationNext = 0
-      current = theTetraminos[random][rotationNext]
+      const rotationNext = 0;
+      current = theTetraminos[random][rotationNext];
       currentCollor = nextCollor;
-      addScore()
-      draw()
-      nextCollor = Math.floor(Math.random() * collors.length)
-      displayShape()
-      gameOver()
+      score += 13;
+      scoreDisplay.innerHTML = score;
+      addScore();
+      draw();
+      nextCollor = Math.floor(Math.random() * collors.length);
+      displayShape();
+      gameOver();
       newTetramino = true;
       tetraminoFreezeAudio.play();
     }
@@ -266,9 +268,11 @@ document.addEventListener("DOMContentLoaded", () => {
       timerId = null
       document.removeEventListener("keydown", control)
     } else {
-      isMobile 
-      ? document.addEventListener("click", control)
-      : document.addEventListener("keydown", control)
+      if (isMobile) {
+        document.addEventListener("click", control)
+      } else {
+        document.addEventListener("keydown", control)
+      }
 
       setTimeToMoveDown();
     }
@@ -278,17 +282,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setTimeToMoveDown() {
 
-    if (score === 10) { 
-      timeMoveDown = 500
-    } else if (score === 20) { 
-      timeMoveDown = 400
-    } else if (score === 30) { 
-      timeMoveDown = 300
-    } else if (score >= 40) { 
-      timeMoveDown = 200
+    if (score <= 450) { 
+      timeMoveDown = 500;
+    } else if (450 < score && score <= 1000) { 
+      timeMoveDown = 400;
+    } else if (1000 < score && score <= 1700) { 
+      timeMoveDown = 300;
+    } else if (1700 < score && score <= 2700) { 
+      timeMoveDown = 200;
+    } else {
+      timeMoveDown = 160;
     }
 
-    timerId = setInterval(moveDown, timeMoveDown)
+    timerId = setInterval(moveDown, timeMoveDown);
   }
 
   function addScore() {
@@ -297,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const row = [i, i + 1, i + 2, i + 3, i + 4, i + 5, i + 6, i + 7, i + 8, i + 9]
 
       if (row.every(index => squares[index].classList.contains("taken"))) {
-        score += 10;
+        score += 97;
         scoreDisplay.innerHTML = score;
         completedLineAudio.play();
         row.forEach(index => {
@@ -308,11 +314,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const squaresRemoved = squares.splice(i, width);
         squares = squaresRemoved.concat(squares);
         squares.forEach(cell => grid.appendChild(cell));
-
-        clearInterval(timerId);
-        setTimeToMoveDown();
       }
     }
+
+    clearInterval(timerId);
+    setTimeToMoveDown();
   }
 
 
@@ -320,7 +326,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (current.some(index => squares[currentPosition + index].classList.contains("taken"))) {
       clearInterval(timerId)
       document.removeEventListener("keydown", control);
-      scoreDisplay.innerHTML = "GAME OVER"
+      score -= 13;
+      scoreDisplay.innerHTML = score + " - GAME OVER";
       gameOverAudio.play();
       startBtn.setAttribute("disabled", "true")
       startBtn.classList.add("disabled")
