@@ -1,6 +1,8 @@
 # Tetris
 
-#SCREENSHOTS
+<p align="center">
+   <img src="https://github.com/gustavopolonio/Tetris/blob/master/.github/web.png" width="500"/>
+</p>
 
 # :pushpin: Table of Contents
 
