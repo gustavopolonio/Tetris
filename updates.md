@@ -1,6 +1,5 @@
 [ ] Make responsible
 [ ] Make commands to play in mobile
-[ ] When break more than one line, bug
 [ ] Increase score when tetramino freeze too
 [ ] Ranking scores
 
@@ -24,3 +23,4 @@
 [X] Generate different tetramino colors
 [X] Style mini grid
 [X] When maintain key press, go down and side rapper
+[X] When break more than one line, bug

@@ -105,10 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const rotationNext = 0
       current = theTetraminos[random][rotationNext]
       currentCollor = nextCollor;
+      addScore()
       draw()
       nextCollor = Math.floor(Math.random() * collors.length)
       displayShape()
-      addScore()
       gameOver()
       newTetramino = true;
       tetraminoFreezeAudio.play();
