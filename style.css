@@ -45,21 +45,21 @@
 }
 
 .blue {
-    background: blue;
+    background: linear-gradient(to right, #0033cc, #99b3ff);
 }
 
 .yellow {
-    background: yellow;
+    background: linear-gradient(to right, #ffcc00, #ffeb99);
 }
 
 .red {
-    background: red;
+    background: linear-gradient(to right, #ff3300, #ff5c33, #ff8566);
 }
 
 .orange {
-    background: orange;
+    background: linear-gradient(to right, #b34700, #ff751a, #ff944d);
 }
 
 .pink {
-    background: palevioletred;
+    background: linear-gradient(to right, #cc0099, #ff80ff, #ff99ff);
 }

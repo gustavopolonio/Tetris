@@ -229,9 +229,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (timerId) {
       clearInterval(timerId)
       timerId = null
-      document.removeEventListener("keyup", control)
+      document.removeEventListener("keydown", control)
     } else {
-      document.addEventListener("keyup", control)
+      document.addEventListener("keydown", control)
       setTimeToMoveDown();
     }
   })
@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function gameOver() {
     if (current.some(index => squares[currentPosition + index].classList.contains("taken"))) {
       clearInterval(timerId)
-      document.removeEventListener("keyup", control);
+      document.removeEventListener("keydown", control);
       scoreDisplay.innerHTML = "GAME OVER"
       gameOverAudio.play();
       startBtn.setAttribute("disabled", "true")

@@ -2,7 +2,7 @@
 [ ] Make commands to play in mobile
 [ ] When break more than one line, bug
 [ ] Increase score when tetramino freeze too
-[ ] When maintain key press, go down and side rapper
+[ ] Ranking scores
 
 <!-- [ ] Put image rendering the page -->
 
@@ -23,3 +23,4 @@
 [X] Put border in Tetraminos
 [X] Generate different tetramino colors
 [X] Style mini grid
+[X] When maintain key press, go down and side rapper
