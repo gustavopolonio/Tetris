@@ -108,13 +108,13 @@ body h3 {
 
 @media (max-width: 450px) {
   .grid {
-    width: 200px;
-    height: 400px;
+    width: 182px;
+    height: 360px;
   }
 
   .grid div {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     border: 1px solid green;
   }
 
@@ -127,14 +127,14 @@ body h3 {
   }
 
   .mini-grid {
-    width: 80px;
-    height: 80px;
-    margin-left: 10px;
+    width: 72px;
+    height: 72px;
+    margin-left: 5px;
   }
   
   .mini-grid div {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     border: 1px solid green;
   }
 
