@@ -290,8 +290,10 @@ document.addEventListener("DOMContentLoaded", () => {
       timeMoveDown = 300;
     } else if (1700 < score && score <= 2700) { 
       timeMoveDown = 200;
+    } else if (2700 < score && score <= 3850) {
+      timeMoveDown = 150;
     } else {
-      timeMoveDown = 160;
+      timeMoveDown = 110;
     }
 
     timerId = setInterval(moveDown, timeMoveDown);
