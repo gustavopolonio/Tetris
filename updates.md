@@ -1,4 +1,3 @@
-[ ] Update the commands
 [ ] Put image rendering the page
 [ ] Make responsible
 [ ] Make commands to play in mobile
@@ -22,3 +21,4 @@
 [X] Put sound when Tetramino freeze
 [X] Icrease speed over the time
 [X] Button play/pause after game over
+[X] Update the commands

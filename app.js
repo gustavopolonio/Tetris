@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
       moveLeft()
     } else if (event.keyCode === 39) {
       moveRight()
-    } else if (event.keyCode === 38) {
+    } else if (event.keyCode === 38 || event.keyCode === 32 || event.keyCode === 13) {
       rotate()
     } else if (event.keyCode === 40) {
       moveDown()
@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Button Play/Pause
-  startBtn.addEventListener("click", () => {
+  startBtn.addEventListener("mousedown", () => {
     if (timerId) {
       clearInterval(timerId)
       timerId = null
