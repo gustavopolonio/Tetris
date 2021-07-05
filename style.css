@@ -15,12 +15,8 @@ body {
   padding: 1rem;
 }
 
-body h3 {
-  font-size: 2rem;
-}
-
 .buttons-container {
-  padding: 1rem 0;
+  padding-bottom: 1rem;
   width: 240px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -45,6 +41,17 @@ body h3 {
 
 .content-container {
   display: flex;
+}
+
+.content-container .content-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body h3 {
+  font-size: 2rem;
+  margin-top: 1.5rem;
 }
 
 .grid {
@@ -145,14 +152,18 @@ body h3 {
     border: 1px solid transparent;
   }
 
+  body h3 {
+    font-size: 1rem;
+  }
+
   .commands-controller {
     display: grid;
-    grid-template-columns: repeat(3, 45px);
-    grid-template-rows: 40px 40px;
+    grid-template-columns: repeat(3, 55px);
+    grid-template-rows: 45px 45px;
     gap: 5px;
 
-    margin-top: 20px;
-    margin-left: 6px;
+    margin-top: 7px;
+    margin-left: 30px;
   }
 
   .commands-controller button {
@@ -200,17 +211,21 @@ body h3 {
   }
 
   .mini-grid .mobile-hidden {
-    border: transparent
+    border: 1px solid transparent;
+  }
+
+  body h3 {
+    font-size: 1.2rem;
   }
 
   .commands-controller {
     display: grid;
     grid-template-columns: repeat(3, 60px);
     grid-template-rows: 50px 50px;
-    gap: 5px;
+    gap: 7px;
 
-    margin-top: 28px;
-    margin-left: 8px;
+    margin-top: 8px;
+    margin-left: 50px;
   }
 
   .commands-controller button {
