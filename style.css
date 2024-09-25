@@ -17,7 +17,7 @@ body {
 
 .buttons-container {
   padding-bottom: 1rem;
-  width: 240px;
+  width: 232px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
@@ -56,8 +56,8 @@ body h3 {
 }
 
 .grid {
-  width: 240px;
-  height: 480px;
+  width: 232px;
+  height: 464px;
   background-color: green;
   display: flex;
   flex-wrap: wrap;
@@ -66,15 +66,15 @@ body h3 {
 .grid div {
   width: 20px;
   height: 20px;
-  border: 2px solid green;
+  border: 1.6px solid green;
 }
 
 .tetramino {
-  border: 2px solid black !important;
+  border: 1.6px solid black !important;
 }
 
 #div-transparent {
-  border: 2px solid transparent;
+  border: 1.6px solid transparent;
 }
 
 .mini-grid {
@@ -88,7 +88,7 @@ body h3 {
 .mini-grid div {
   width: 20px;
   height: 20px;
-  border: 2px solid green;
+  border: 1.6px solid green;
 }
 
 .disabled {
